@@ -16,4 +16,4 @@ export default function Home() {
     </div>
   );
 }
-https://wa.me/201XXXXXXXXX?text=أريد+حجز+موعد+صيانة+تكييف
+https://wa.me/201093946313?text=أريد+حجز+موعد+صيانة+تكييف
