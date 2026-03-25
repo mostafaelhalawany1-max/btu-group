@@ -13,7 +13,7 @@ export default function Home() {
       </p>
       <br />
       <a 
-        href="https://wa.me/20109346313" 
+        href="https://wa.me/201093946313" 
         style={{ 
           padding: '15px 30px', 
           backgroundColor: '#25d366', 
