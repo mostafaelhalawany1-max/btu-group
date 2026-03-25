@@ -1,4 +1,7 @@
 export default function Home() {
+  // اسم الملف اللي إنت سميته في مجلد public
+  const logoFileName = "logo.png"; 
+
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -15,10 +18,24 @@ export default function Home() {
       textAlign: 'center',
       padding: '20px'
     }}>
-      <h1 style={{ fontSize: '3.5rem', marginBottom: '10px', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>BTU Group</h1>
-      <h2 style={{ fontSize: '1.8rem', fontWeight: 'normal', opacity: 0.9 }}>للتكييف وفلاتر المياه</h2>
+      {/* عرض اللوجو الخاص بك */}
+      <img 
+        src={`/${logoFileName}`} 
+        alt="BTU Group"
+        style={{ 
+          height: '140px', 
+          width: 'auto', 
+          marginBottom: '20px', 
+          backgroundColor: 'white', 
+          padding: '15px',
+          borderRadius: '20px',
+          boxShadow: '0 8px 15px rgba(0,0,0,0.3)'
+        }}
+      />
       
-      <p style={{ fontSize: '1.3rem', margin: '30px 0', maxWidth: '700px', lineHeight: '1.8' }}>
+      <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>BTU Group</h1>
+      
+      <p style={{ fontSize: '1.3rem', margin: '20px 0 30px 0', maxWidth: '700px', lineHeight: '1.8' }}>
         الحل الأمثل لتوريد وتركيب وصيانة التكييفات <br/> وفلاتر المياه بأعلى معايير الجودة
       </p>
       
@@ -34,8 +51,7 @@ export default function Home() {
           textDecoration: 'none', 
           fontWeight: 'bold',
           fontSize: '1.4rem',
-          boxShadow: '0 10px 20px rgba(37, 211, 102, 0.4)',
-          display: 'inline-block'
+          boxShadow: '0 10px 20px rgba(37, 211, 102, 0.4)'
         }}
       >
         اطلب صيانة الآن عبر واتساب
