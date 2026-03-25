@@ -63,3 +63,4 @@ export default function Home() {
     </div>
   );
 }
+https://wa.me/201XXXXXXXXX?text=أريد+حجز+موعد+صيانة+تكييف
