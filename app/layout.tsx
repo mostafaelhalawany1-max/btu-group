@@ -1,33 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "BTU Group - صيانة تكييفات وفلاتر",
-  description: "أفضل خدمة صيانة تكييفات وفلاتر مياه في الشيخ زايد و6 أكتوبر",
+  // العنوان اللي بيظهر فوق في المتصفح وفي واتساب
+  title: "BTU Group - صيانة تكييفات وفلاتر مياه",
+  
+  // الوصف اللي بيظهر تحت اللينك
+  description: "الحل الأمثل لتوريد وتركيب وصيانة التكييفات وفلاتر المياه بأعلى معايير الجودة وقطع غيار أصلية.",
+  
+  // إعدادات المعاينة لواتساب وفيسبوك (Open Graph)
+  openGraph: {
+    title: "BTU Group | خبرة +10 سنوات",
+    description: "تخصصنا التكييف وفلاتر المياه. سرعة استجابة وقطع غيار أصلية.",
+    url: "https://btu-group.vercel.app",
+    siteName: "BTU Group",
+    images: [
+      {
+        url: "/logo.png", // هيسحب اللوجو اللي إنت رفعته
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "ar_EG",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="ar" dir="rtl">
+      <body>{children}</body>
     </html>
   );
 }
