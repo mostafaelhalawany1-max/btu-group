@@ -1,10 +1,13 @@
+'use client'; // ضروري عشان خاصية البحث تشتغل
+
 export default function Home() {
   const logoFileName = "logo.png"; 
+  const myPhoneNumber = "201093946313"; // 👈 ضع رقمك هنا مكان الـ X
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#f4f7f6' }}>
       
-      {/* 1. شريط الإعلانات العلوي (زي سكن مصر) */}
+      {/* 1. شريط الإعلانات العلوي */}
       <div style={{ backgroundColor: '#ff4d4d', color: 'white', textAlign: 'center', padding: '10px', fontWeight: 'bold', fontSize: '0.9rem' }}>
         📢 عرض خاص: خصم 20% على غسيل التكييفات لفترة محدودة!
       </div>
@@ -18,9 +21,30 @@ export default function Home() {
         <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>BTU Group للمقاولات والتوريدات</h1>
         <p style={{ fontSize: '1.2rem', opacity: 0.9 }}>بوابتك الرسمية لخدمات التكييف وفلاتر المياه الاحترافية</p>
         
-        {/* شريط البحث (منظر جمالي) */}
+        {/* 🔍 شريط البحث "الذكي" */}
         <div style={{ marginTop: '30px', maxWidth: '500px', margin: '30px auto', position: 'relative' }}>
-          <input type="text" placeholder="ابحث عن خدمتك (صيانة، فلاتر، توريد)..." style={{ width: '100%', padding: '15px 20px', borderRadius: '30px', border: 'none', fontSize: '1rem' }} />
+          <input 
+            type="text" 
+            placeholder="ابحث عن خدمتك (صيانة تكييف ، فلاتر، توريد)..." 
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                const query = (e.target as HTMLInputElement).value;
+                window.open(`https://wa.me/${myPhoneNumber}?text=كنت ببحث في الموقع عن: ${query}`, '_blank');
+              }
+            }}
+            style={{ 
+              width: '100%', 
+              padding: '15px 20px', 
+              borderRadius: '30px', 
+              border: 'none', 
+              fontSize: '1rem',
+              color: '#333',
+              outline: 'none',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+            }} 
+          />
+          <div style={{ position: 'absolute', left: '20px', top: '15px', color: '#999' }}>🔍</div>
+          <p style={{ fontSize: '0.8rem', marginTop: '10px', opacity: 0.8 }}>اضغط Enter للبحث السريع</p>
         </div>
       </header>
 
@@ -36,7 +60,7 @@ export default function Home() {
             <div style={{ padding: '20px' }}>
               <h3 style={{ color: '#1a365d' }}>صيانة وتجهيز التكييف</h3>
               <p style={{ color: '#666', fontSize: '0.9rem' }}>فحص شامل وشحن فريون وتنظيف الوحدات بأحدث الأجهزة.</p>
-              <button style={{ backgroundColor: '#25d366', color: 'white', border: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', cursor: 'pointer', fontWeight: 'bold' }}>اطلب الآن</button>
+              <a href={`https://wa.me/${myPhoneNumber}?text=أريد الاستفسار عن عرض صيانة التكييف`} target="_blank" style={{ display: 'block', backgroundColor: '#25d366', color: 'white', textDecoration: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', fontWeight: 'bold' }}>اطلب الآن</a>
             </div>
           </div>
 
@@ -46,7 +70,7 @@ export default function Home() {
             <div style={{ padding: '20px' }}>
               <h3 style={{ color: '#1a365d' }}>تركيب فلاتر مياه</h3>
               <p style={{ color: '#666', fontSize: '0.9rem' }}>تركيب فلاتر 7 مراحل مع ضمان حقيقي وقطع غيار أصلية.</p>
-              <button style={{ backgroundColor: '#25d366', color: 'white', border: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', cursor: 'pointer', fontWeight: 'bold' }}>اطلب الآن</button>
+              <a href={`https://wa.me/${myPhoneNumber}?text=أريد الاستفسار عن فلاتر المياه`} target="_blank" style={{ display: 'block', backgroundColor: '#25d366', color: 'white', textDecoration: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', fontWeight: 'bold' }}>اطلب الآن</a>
             </div>
           </div>
 
@@ -56,7 +80,7 @@ export default function Home() {
             <div style={{ padding: '20px' }}>
               <h3 style={{ color: '#1a365d' }}>توريد وتركيب (مشاريع)</h3>
               <p style={{ color: '#666', fontSize: '0.9rem' }}>توريد تكييفات كونسيلد ومركزي للمكاتب والفلل بأفضل الأسعار.</p>
-              <button style={{ backgroundColor: '#25d366', color: 'white', border: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', cursor: 'pointer', fontWeight: 'bold' }}>استفسر الآن</button>
+              <a href={`https://wa.me/${myPhoneNumber}?text=أريد عرض أسعار لتوريد وتركيب تكييفات لمشروع`} target="_blank" style={{ display: 'block', backgroundColor: '#25d366', color: 'white', textDecoration: 'none', padding: '10px 25px', borderRadius: '20px', marginTop: '15px', fontWeight: 'bold' }}>استفسر الآن</a>
             </div>
           </div>
 
