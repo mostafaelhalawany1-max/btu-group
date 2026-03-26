@@ -2,7 +2,7 @@
 
 export default function Home() {
   const logoFileName = "logo.png"; 
-  const myPhoneNumber = "201093946313"; // 👈 ضع رقمك هنا مكان الـ X
+  const myPhoneNumber = "201XXXXXXXXX"; // 👈 ضع رقمك هنا مكان الـ X
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#f4f7f6' }}>
@@ -14,18 +14,18 @@ export default function Home() {
 
       {/* 2. القسم العلوي (Hero Section) */}
       <header style={{ 
-        background: 'linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")',
+        background: 'linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")',
         backgroundSize: 'cover', backgroundPosition: 'center', padding: '60px 20px', textAlign: 'center', color: 'white'
       }}>
         <img src={`/${logoFileName}`} alt="BTU Group" style={{ height: '100px', backgroundColor: 'white', padding: '10px', borderRadius: '15px', marginBottom: '20px' }} />
         <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>BTU Group للمقاولات والتوريدات</h1>
         <p style={{ fontSize: '1.2rem', opacity: 0.9 }}>بوابتك الرسمية لخدمات التكييف وفلاتر المياه الاحترافية</p>
         
-        {/* 🔍 شريط البحث "الذكي" */}
+        {/* 🔍 شريط البحث "الذكي" المطور - أبيض بتباين عالي */}
         <div style={{ marginTop: '30px', maxWidth: '500px', margin: '30px auto', position: 'relative' }}>
           <input 
             type="text" 
-            placeholder="ابحث عن خدمتك (صيانة تكييف ، فلاتر، توريد)..." 
+            placeholder="ابحث عن خدمتك (صيانة، فلاتر، توريد)..." 
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 const query = (e.target as HTMLInputElement).value;
@@ -34,17 +34,19 @@ export default function Home() {
             }}
             style={{ 
               width: '100%', 
-              padding: '15px 20px', 
+              padding: '18px 25px', 
               borderRadius: '30px', 
-              border: 'none', 
-              fontSize: '1rem',
-              color: '#333',
+              border: '2px solid rgba(255,255,255,0.3)', // حافة خفيفة جداً
+              fontSize: '1.1rem',
+              color: '#333', // لون الكلام اللي بيكتبه العميل (غامق)
+              backgroundColor: '#FFFFFF', // 🌟 الخلفية بقت بيضاء
               outline: 'none',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+              boxShadow: '0 8px 30px rgba(0,0,0,0.3)' // ظل أقوى لإبرازه
             }} 
           />
-          <div style={{ position: 'absolute', left: '20px', top: '15px', color: '#999' }}>🔍</div>
-          <p style={{ fontSize: '0.8rem', marginTop: '10px', opacity: 0.8 }}>اضغط Enter للبحث السريع</p>
+          {/* أيقونة البحث بلون أزرق غامق عشان تبان على الأبيض */}
+          <div style={{ position: 'absolute', left: '25px', top: '18px', fontSize: '1.2rem', color: '#1a365d' }}>🔍</div>
+          <p style={{ fontSize: '0.85rem', marginTop: '10px', color: 'white', opacity: 0.9 }}>اضغط Enter للبحث السريع</p>
         </div>
       </header>
 
