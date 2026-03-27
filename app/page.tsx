@@ -8,17 +8,14 @@ export default function Home() {
   const [showInstallBanner, setShowInstallBanner] = useState(false);
 
   useEffect(() => {
-    // كود إجبار ظهور شريط التثبيت
     const handler = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);
       setShowInstallBanner(true);
     };
     window.addEventListener('beforeinstallprompt', handler);
-    
-    // تجربة إظهاره يدوياً للتأكد من التصميم
+    // إظهار الشريط للتأكد من التنسيق
     setShowInstallBanner(true); 
-
     return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
@@ -32,14 +29,14 @@ export default function Home() {
 
   const handleSearch = () => {
     if (searchQuery.trim() !== '') {
-      window.open(`https://wa.me/201093946313?text=كنت ببحث في الموقع عن: ${searchQuery}`, '_blank');
+      window.open(`https://wa.me/201093946313?text=استفسار من الموقع عن: ${searchQuery}`, '_blank');
     }
   };
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#f8fafc', minHeight: '100vh', margin: 0 }}>
       
-      {/* 1. شريط الأخبار رفيع ومنظم */}
+      {/* 1. شريط الأخبار */}
       <div style={{ backgroundColor: '#ff4d4d', color: 'white', overflow: 'hidden', whiteSpace: 'nowrap', padding: '0', fontWeight: 'bold', fontSize: '0.8rem', display: 'flex', alignItems: 'center', height: '35px' }}>
         <div style={{ backgroundColor: '#333', padding: '0 12px', height: '100%', display: 'flex', alignItems: 'center', zIndex: 10 }}>شريط الأخبار 📡</div>
         <style>{`
@@ -51,24 +48,26 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. الهيرو سكشن (تصغير الحجم وتفتيح اللون) */}
+      {/* 2. الهيرو سكشن (اللون الأفتح واللوجو في النص) */}
       <header style={{ 
-        background: 'linear-gradient(rgba(42, 74, 115, 0.9), rgba(42, 74, 115, 0.9)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")',
-        backgroundSize: 'cover', backgroundPosition: 'center', padding: '35px 20px', textAlign: 'center', color: 'white'
+        background: 'linear-gradient(rgba(42, 74, 115, 0.88), rgba(42, 74, 115, 0.88)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")',
+        backgroundSize: 'cover', backgroundPosition: 'center', padding: '30px 20px', textAlign: 'center', color: 'white'
       }}>
-        <img src="/logo.png" alt="BTU Group" style={{ width: '160px', backgroundColor: 'white', padding: '8px', borderRadius: '12px', marginBottom: '15px' }} />
-        <h1 style={{ fontSize: '1.8rem', marginBottom: '5px', fontWeight: 'bold' }}>BTU Group للمقاولات والتوريدات</h1>
-        <p style={{ fontSize: '1rem', opacity: 0.85, marginBottom: '25px' }}>خدمات التكييف وفلاتر المياه الاحترافية</p>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
+          <img src="/logo.png" alt="BTU Group" style={{ width: '150px', backgroundColor: 'white', padding: '8px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
+        </div>
+        <h1 style={{ fontSize: '1.7rem', marginBottom: '5px', fontWeight: 'bold' }}>BTU Group للمقاولات والتوريدات</h1>
+        <p style={{ fontSize: '0.95rem', opacity: 0.85, marginBottom: '20px' }}>خدمات التكييف وفلاتر المياه الاحترافية</p>
         
-        {/* شريط البحث (تصغير الجزء الأبيض) */}
-        <div style={{ maxWidth: '450px', margin: '0 auto', position: 'relative' }}>
+        {/* شريط البحث الملموم */}
+        <div style={{ maxWidth: '420px', margin: '0 auto', position: 'relative' }}>
           <input 
             type="text" placeholder="ابحث عن خدمتك..." 
             value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            style={{ width: '100%', padding: '14px 20px', borderRadius: '30px', border: 'none', fontSize: '1rem', color: '#333', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', outline: 'none' }} 
+            style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: 'none', fontSize: '0.95rem', color: '#333', boxShadow: '0 4px 15px rgba(0,0,0,0.2)', outline: 'none' }} 
           />
-          <button onClick={handleSearch} style={{ position: 'absolute', left: '15px', top: '12px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem', color: '#2a4a73' }}>🔍</button>
+          <button onClick={handleSearch} style={{ position: 'absolute', left: '15px', top: '10px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', color: '#2a4a73' }}>🔍</button>
         </div>
       </header>
 
@@ -97,20 +96,24 @@ export default function Home() {
         </div>
       </main>
 
-      {/* 4. شريط التثبيت (ظاهر ومثبت أسفل الشاشة) */}
+      {/* 4. الفوتر مع مساحة إضافية عشان شريط التثبيت */}
+      <footer style={{ backgroundColor: '#2a4a73', color: 'white', textAlign: 'center', padding: '25px', paddingBottom: '90px' }}>
+        <p style={{ fontSize: '0.8rem', margin: 0 }}>© 2026 BTU Group للمقاولات والتوريدات - جميع الحقوق محفوظة</p>
+      </footer>
+
+      {/* 5. شريط "أضف للاختصارات" (الجديد والمحسن) */}
       {showInstallBanner && (
         <div style={{ position: 'fixed', bottom: '0', left: '0', right: '0', backgroundColor: '#f37021', color: 'white', padding: '12px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 9999, boxShadow: '0 -4px 15px rgba(0,0,0,0.2)' }}>
-          <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>📥 ثبت تطبيق BTU Group على موبايلك</span>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button onClick={handleInstallClick} style={{ backgroundColor: 'white', color: '#f37021', border: 'none', padding: '6px 15px', borderRadius: '15px', fontWeight: 'bold', cursor: 'pointer' }}>تثبيت</button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '1.2rem' }}>📱</span>
+            <span style={{ fontWeight: 'bold', fontSize: '0.85rem' }}>أضف BTU Group إلى شاشتك الرئيسية</span>
+          </div>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <button onClick={handleInstallClick} style={{ backgroundColor: 'white', color: '#f37021', border: 'none', padding: '7px 15px', borderRadius: '20px', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.85rem' }}>إضافة</button>
             <button onClick={() => setShowInstallBanner(false)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
           </div>
         </div>
       )}
-
-      <footer style={{ backgroundColor: '#2a4a73', color: 'white', textAlign: 'center', padding: '20px' }}>
-        <p style={{ fontSize: '0.8rem', margin: 0 }}>© 2026 BTU Group للمقاولات والتوريدات</p>
-      </footer>
     </div>
   );
 }
