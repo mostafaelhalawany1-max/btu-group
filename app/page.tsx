@@ -48,6 +48,7 @@ export default function Home() {
       
       {/* ⚠️ أهم جزء: ربط اللوجو كأيقونة المتصفح (Favicon) و apple-touch-icon */}
       <head>
+     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>BTU Group | صيانة تكييفات وفلاتر مياه</title>
         <link rel="icon" type="image/png" href={`/${logoFileName}`} />
         <link rel="apple-touch-icon" href={`/${logoFileName}`} />
@@ -109,13 +110,13 @@ export default function Home() {
       <main style={{ padding: '50px 20px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
           
-          {/* كارت 1: المشاريع (صورة موقع عمل) */}
-          <div className="card" style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', textAlign: 'center', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #333' }}>
-            <div style={{ height: '160px', background: 'url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600") center/cover' }}></div>
+                   {/* كارت 3: التكييف (صورة وحدة تكييف) */}
+          <div className="card" style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', textAlign: 'center', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #25d366' }}>
+            <div style={{ height: '160px', background: 'url("https://images.unsplash.com/photo-1599933310631-db671a53381a?q=80&w=600") center/cover' }}></div>
             <div style={{ padding: '25px' }}>
-              <h3 style={{ color: '#2a4a73', marginBottom: '15px' }}>توريد وتركيب (مشاريع)</h3>
-              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>نحن متخصصون في أنظمة الكونسيلد والمركزي للمكاتب، الفلل، والمباني التجارية الكبيرة.</p>
-              <a href={`https://wa.me/${myPhoneNumber}?text=استفسار عن مشاريع توريد للمباني والفلل`} target="_blank" style={{ display: 'inline-block', backgroundColor: '#333', color: 'white', padding: '12px 30px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>تواصل معنا</a>
+              <h3 style={{ color: '#2a4a73', marginBottom: '15px' }}>صيانة وتجهيز التكييف</h3>
+              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>غسيل تكييف، شحن فريون، فحص أعطال، وتجهيز المواسير بأفضل الخامات العالمية.</p>
+              <a href={`https://wa.me/${myPhoneNumber}?text=أريد طلب صيانة/تجهيز تكييف`} target="_blank" style={{ display: 'inline-block', backgroundColor: '#25d366', color: 'white', padding: '12px 30px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>اطلب الآن</a>
             </div>
           </div>
 
@@ -129,13 +130,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* كارت 3: التكييف (صورة وحدة تكييف) */}
-          <div className="card" style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', textAlign: 'center', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #25d366' }}>
-            <div style={{ height: '160px', background: 'url("https://images.unsplash.com/photo-1599933310631-db671a53381a?q=80&w=600") center/cover' }}></div>
+ {/* كارت 1: المشاريع (صورة موقع عمل) */}
+          <div className="card" style={{ backgroundColor: 'white', borderRadius: '20px', overflow: 'hidden', textAlign: 'center', boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #333' }}>
+            <div style={{ height: '160px', background: 'url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600") center/cover' }}></div>
             <div style={{ padding: '25px' }}>
-              <h3 style={{ color: '#2a4a73', marginBottom: '15px' }}>صيانة وتجهيز التكييف</h3>
-              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>غسيل تكييف، شحن فريون، فحص أعطال، وتجهيز المواسير بأفضل الخامات العالمية.</p>
-              <a href={`https://wa.me/${myPhoneNumber}?text=أريد طلب صيانة/تجهيز تكييف`} target="_blank" style={{ display: 'inline-block', backgroundColor: '#25d366', color: 'white', padding: '12px 30px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>اطلب الآن</a>
+              <h3 style={{ color: '#2a4a73', marginBottom: '15px' }}>توريد وتركيب (مشاريع)</h3>
+              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>نحن متخصصون في أنظمة الكونسيلد والمركزي للمكاتب، الفلل، والمباني التجارية الكبيرة.</p>
+              <a href={`https://wa.me/${myPhoneNumber}?text=استفسار عن مشاريع توريد للمباني والفلل`} target="_blank" style={{ display: 'inline-block', backgroundColor: '#333', color: 'white', padding: '12px 30px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>تواصل معنا</a>
             </div>
           </div>
 
