@@ -1,17 +1,15 @@
 {
-  "name": "BTU Group للمقاولات والتوريدات",
+  "name": "BTU Group",
   "short_name": "BTU Group",
-  "description": "بوابتك الرسمية لخدمات التكييف وفلاتر المياه",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a365d",
-  "theme_color": "#1a365d",
+  "background_color": "#2a4a73",
+  "theme_color": "#2a4a73",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/logo.png",
       "sizes": "512x512",
-      "type": "image/x-icon",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
