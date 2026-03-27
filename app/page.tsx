@@ -48,7 +48,9 @@ export default function Home() {
       
       {/* ⚠️ أهم جزء: ربط اللوجو كأيقونة المتصفح (Favicon) و apple-touch-icon */}
       <head>
-     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+ <head>
+  <link rel="icon" href="/favicon.ico" />
+</head>
         <title>BTU Group | صيانة تكييفات وفلاتر مياه</title>
         <link rel="icon" type="image/png" href={`/${logoFileName}`} />
         <link rel="apple-touch-icon" href={`/${logoFileName}`} />
