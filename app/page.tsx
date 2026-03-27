@@ -9,17 +9,13 @@ export default function Home() {
   const [showNotifyPopup, setShowNotifyPopup] = useState(false);
 
   useEffect(() => {
-    // 🔔 إظهار نافذة الاشعارات بعد 3 ثواني
     const timer = setTimeout(() => setShowNotifyPopup(true), 3000);
-
     const handler = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);
       setShowInstallBanner(true);
     };
     window.addEventListener('beforeinstallprompt', handler);
-    setShowInstallBanner(true); 
-
     return () => {
       clearTimeout(timer);
       window.removeEventListener('beforeinstallprompt', handler);
@@ -41,128 +37,100 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#e0f2fe', minHeight: '100vh', margin: 0, padding: 0 }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#f0f9ff', minHeight: '100vh', margin: 0 }}>
       
-      {/* ⚠️ أهم جزء: ربط المثلث الأسود بملف اللوجو مباشرة كأيقونة للمتصفح */}
       <head>
         <title>BTU Group | صيانة تكييفات وفلاتر مياه</title>
-        <link rel="icon" type="image/png" href="/logo.png" />
-        <link rel="shortcut icon" href="/logo.png" />
+        {/* سطر التحقق من جوجل اللي بعته */}
+        <meta name="google-site-verification" content="GnBnOrp1gL_I623oKpY8YrDXosh0S38l2N-eFPHxS0g" />
+        
+        {/* وصف الموقع لتحسين البحث (SEO) */}
+        <meta name="description" content="BTU Group للمقاولات والتوريدات - خبراء صيانة التكييف وتركيب فلاتر المياه في مصر." />
+        
+        {/* ربط الأيقونة باللوجو */}
+        <link rel="icon" href="/logo.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
-        <link rel="manifest" href="/manifest.json" />
       </head>
 
-      {/* 1. 📢 شريط الأخبار الثابت (Sticky) */}
-      <div style={{ backgroundColor: '#ff4d4d', color: 'white', overflow: 'hidden', whiteSpace: 'nowrap', padding: '0', fontWeight: 'bold', fontSize: '1rem', display: 'flex', alignItems: 'center', height: '45px', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-        <div style={{ backgroundColor: '#333', padding: '0 15px', height: '100%', display: 'flex', alignItems: 'center', zIndex: 10 }}>شريط الأخبار 📡</div>
-        <style>{`
-          @keyframes marquee { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-          .marquee { display: inline-block; animation: marquee 20s linear infinite; }
-          .card { transition: 0.3s; background: white; border-radius: 20px; overflow: hidden; text-align: center; }
-          .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important; }
-        `}</style>
-        <div style={{ flex: 1, overflow: 'hidden' }}>
-          <div className="marquee">📢 خصم 20% لفترة محدودة على صيانة التكييف ——— 💧 مياه نقية مع فلاتر BTU Group الأصلية ——— 🛠️ ضمان عام كامل على جميع قطع الغيار</div>
-        </div>
+      {/* شريط الأخبار */}
+      <div style={{ backgroundColor: '#ff4d4d', color: 'white', padding: '10px', textAlign: 'center', fontWeight: 'bold', position: 'sticky', top: 0, zIndex: 1000 }}>
+         📢 خصم 20% على غسيل التكييفات لفترة محدودة! ——— 🛠️ قطع غيار أصلية بضمان عام كامل!
       </div>
 
-      {/* 2. الهيرو سكشن (اللوجو المتوسط والبحث الأبيض) */}
-      <header style={{ 
-        background: 'linear-gradient(rgba(42, 74, 115, 0.92), rgba(42, 74, 115, 0.92)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")',
-        backgroundSize: 'cover', backgroundPosition: 'center', padding: '50px 20px', textAlign: 'center', color: 'white'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '25px' }}>
-          <img src="/logo.png" alt="BTU Group" style={{ width: '220px', backgroundColor: 'white', padding: '12px', borderRadius: '15px', boxShadow: '0 5px 20px rgba(0,0,0,0.2)' }} />
-        </div>
-        <h1 style={{ fontSize: '2rem', marginBottom: '8px', fontWeight: 'bold' }}>BTU Group للمقاولات والتوريدات</h1>
-        <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '35px' }}>خبراء التكييف وفلاتر المياه في مصر</p>
+      {/* الهيرو سكشن */}
+      <header style={{ background: '#2a4a73', padding: '50px 20px', textAlign: 'center', color: 'white' }}>
+        <img src="/logo.png" alt="BTU Group" style={{ width: '200px', backgroundColor: 'white', padding: '10px', borderRadius: '15px', marginBottom: '20px' }} />
+        <h1 style={{ fontSize: '2.2rem', margin: '0 0 10px 0' }}>BTU Group للمقاولات والتوريدات</h1>
+        <p style={{ opacity: 0.9, marginBottom: '30px' }}>بوابتك الرسمية لخدمات التكييف وفلاتر المياه الاحترافية</p>
         
         <div style={{ maxWidth: '500px', margin: '0 auto', position: 'relative' }}>
           <input 
-            type="text" placeholder="ابحث عن خدمتك (صيانة، فلاتر، توريد)..." 
+            type="text" placeholder="ابحث عن خدمتك..." 
             value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            style={{ width: '100%', padding: '18px 25px', borderRadius: '40px', border: 'none', fontSize: '1rem', backgroundColor: '#FFFFFF', color: '#333', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', outline: 'none' }} 
+            style={{ width: '100%', padding: '15px 20px', borderRadius: '30px', border: 'none', color: '#333', outline: 'none' }} 
           />
-          <button onClick={handleSearch} style={{ position: 'absolute', left: '20px', top: '14px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.4rem', color: '#2a4a73' }}>🔍</button>
         </div>
       </header>
 
-      {/* 3. نافذة الاشعارات (Popup) */}
-      {showNotifyPopup && (
-        <div style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 10000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
-          <div style={{ backgroundColor: 'white', borderRadius: '25px', padding: '30px', maxWidth: '380px', width: '100%', textAlign: 'center', boxShadow: '0 15px 40px rgba(0,0,0,0.2)' }}>
-            <img src="/logo.png" alt="BTU Logo" style={{ width: '100px', marginBottom: '15px' }} />
-            <h3 style={{ color: '#2a4a73', marginBottom: '10px', fontSize: '1.3rem' }}>خليك أول واحد يعرف!</h3>
-            <p style={{ color: '#666', fontSize: '0.95rem', marginBottom: '25px' }}>اشترك في التنبيهات عشان توصلك عروض BTU Group الصيفية والشتوية فور صدورها.</p>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <button onClick={() => setShowNotifyPopup(false)} style={{ flex: 1, backgroundColor: '#007bff', color: 'white', border: 'none', padding: '12px', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold' }}>اشترك</button>
-              <button onClick={() => setShowNotifyPopup(false)} style={{ flex: 1, backgroundColor: '#f1f5f9', color: '#64748b', border: 'none', padding: '12px', borderRadius: '12px', cursor: 'pointer' }}>لاحقاً</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* 4. قسم الكروت (الخلفية السماوي مع اللوجو في كل كارت) */}
-      <main style={{ padding: '45px 20px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '30px' }}>
+      {/* الكروت الـ 3 بالترتيب والصور */}
+      <main style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '25px' }}>
           
-          {/* كارت 1: التكييف */}
-          <div className="card" style={{ boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #25d366' }}>
-            <div style={{ padding: '20px', backgroundColor: '#f0fff4' }}>
-              <img src="/logo.png" alt="BTU Logo" style={{ width: '120px', objectFit: 'contain' }} />
-            </div>
-            <div style={{ padding: '25px' }}>
-              <h3 style={{ color: '#2a4a73', marginBottom: '10px' }}>صيانة وتجهيز التكييف</h3>
-              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>غسيل تكييف، شحن فريون، فحص أعطال، وتجهيز المواسير بأفضل الخامات العالمية.</p>
-              <a href="https://wa.me/201093946313?text=أريد صيانة تكييف" style={{ display: 'block', backgroundColor: '#25d366', color: 'white', padding: '12px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>اطلب الآن</a>
+          {/* تكييف */}
+          <div style={{ background: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', textAlign: 'center' }}>
+            <div style={{ height: '180px', background: 'url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600") center/cover' }}></div>
+            <div style={{ padding: '20px' }}>
+              <h3>صيانة وتجهيز التكييف</h3>
+              <p style={{ color: '#666' }}>تنظيف وفحص شامل للوحدات لضمان أعلى كفاءة.</p>
+              <button onClick={() => window.open('https://wa.me/201093946313')} style={{ backgroundColor: '#25d366', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}>اطلب الآن</button>
             </div>
           </div>
 
-          {/* كارت 2: الفلاتر */}
-          <div className="card" style={{ boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #007bff' }}>
-            <div style={{ padding: '20px', backgroundColor: '#ebf8ff' }}>
-              <img src="/logo.png" alt="BTU Logo" style={{ width: '120px', objectFit: 'contain' }} />
-            </div>
-            <div style={{ padding: '25px' }}>
-              <h3 style={{ color: '#2a4a73', marginBottom: '10px' }}>تركيب فلاتر مياه</h3>
-              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>فلاتر 7 مراحل تايواني أصلية مع ضمان لمدة عام ومتابعة دورية للصيانة.</p>
-              <a href="https://wa.me/201093946313?text=أريد تركيب فلتر مياه" style={{ display: 'block', backgroundColor: '#007bff', color: 'white', padding: '12px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>اطلب الآن</a>
+          {/* فلاتر */}
+          <div style={{ background: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', textAlign: 'center' }}>
+            <div style={{ height: '180px', background: 'url("https://images.unsplash.com/photo-1585832770485-e38953556501?w=600") center/cover' }}></div>
+            <div style={{ padding: '20px' }}>
+              <h3>تركيب فلاتر مياه</h3>
+              <p style={{ color: '#666' }}>فلاتر 7 مراحل أصلية تضمن مياه نقية لعائلتك.</p>
+              <button onClick={() => window.open('https://wa.me/201093946313')} style={{ backgroundColor: '#007bff', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}>اطلب الآن</button>
             </div>
           </div>
 
-          {/* كارت 3: المشاريع */}
-          <div className="card" style={{ boxShadow: '0 5px 15px rgba(0,0,0,0.05)', borderBottom: '5px solid #333' }}>
-            <div style={{ padding: '20px', backgroundColor: '#f1f5f9' }}>
-              <img src="/logo.png" alt="BTU Logo" style={{ width: '120px', objectFit: 'contain' }} />
-            </div>
-            <div style={{ padding: '25px' }}>
-              <h3 style={{ color: '#2a4a73', marginBottom: '10px' }}>توريد وتركيب (مشاريع)</h3>
-              <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.7' }}>نحن متخصصون في أنظمة الكونسيلد والمركزي للمكاتب، الفلل، والمباني التجارية الكبيرة.</p>
-              <a href="https://wa.me/201093946313?text=استفسار عن مشاريع التوريد" style={{ display: 'block', backgroundColor: '#333', color: 'white', padding: '12px', borderRadius: '25px', marginTop: '20px', textDecoration: 'none', fontWeight: 'bold' }}>تواصل معنا</a>
+          {/* مشاريع */}
+          <div style={{ background: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', textAlign: 'center' }}>
+            <div style={{ height: '180px', background: 'url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600") center/cover' }}></div>
+            <div style={{ padding: '20px' }}>
+              <h3>توريد ومشاريع</h3>
+              <p style={{ color: '#666' }}>حلول تكييف متكاملة للمكاتب والفلل (كونسيلد ومركزي).</p>
+              <button onClick={() => window.open('https://wa.me/201093946313')} style={{ backgroundColor: '#333', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}>استفسر الآن</button>
             </div>
           </div>
 
         </div>
       </main>
 
-      {/* 5. شريط إضافة الاختصار (PWA) */}
+      {/* شريط الإضافة للشاشة الرئيسية */}
       {showInstallBanner && (
-        <div style={{ position: 'fixed', bottom: '0', left: '0', right: '0', backgroundColor: '#f37021', color: 'white', padding: '15px 25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 9999, boxShadow: '0 -4px 15px rgba(0,0,0,0.2)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '1.3rem' }}>📱</span>
-            <span style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>أضف BTU Group إلى شاشتك الرئيسية لسهولة الطلب</span>
-          </div>
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-            <button onClick={handleInstallClick} style={{ backgroundColor: 'white', color: '#f37021', border: 'none', padding: '8px 20px', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}>إضافة</button>
-            <button onClick={() => setShowInstallBanner(false)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '1.4rem', cursor: 'pointer' }}>✕</button>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: '#f37021', color: 'white', padding: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 2000 }}>
+          <span>ثبت تطبيق BTU Group على موبايلك</span>
+          <button onClick={handleInstallClick} style={{ backgroundColor: 'white', color: '#f37021', border: 'none', padding: '8px 20px', borderRadius: '20px', fontWeight: 'bold' }}>تثبيت</button>
+        </div>
+      )}
+
+      {/* نافذة الإشعارات */}
+      {showNotifyPopup && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '20px', textAlign: 'center', maxWidth: '350px' }}>
+            <img src="/logo.png" style={{ width: '80px', marginBottom: '10px' }} />
+            <h3>خليك متابعنا!</h3>
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>اشترك لتعرف أحدث عروض BTU Group فور صدورها.</p>
+            <button onClick={() => setShowNotifyPopup(false)} style={{ backgroundColor: '#007bff', color: 'white', border: 'none', padding: '10px 30px', borderRadius: '10px' }}>حسناً</button>
           </div>
         </div>
       )}
 
-      {/* 6. الفوتر */}
-      <footer style={{ backgroundColor: '#2a4a73', color: 'white', textAlign: 'center', padding: '35px', paddingBottom: '110px' }}>
-        <p style={{ fontSize: '0.9rem', opacity: 0.8 }}>© 2026 BTU Group للمقاولات والتوريدات - جميع الحقوق محفوظة</p>
+      <footer style={{ backgroundColor: '#2a4a73', color: 'white', textAlign: 'center', padding: '30px', marginTop: '40px' }}>
+        <p>© 2026 BTU Group - جميع الحقوق محفوظة</p>
       </footer>
     </div>
   );
