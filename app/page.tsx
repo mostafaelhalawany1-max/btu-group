@@ -52,6 +52,8 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
 {/* كود إثبات ملكية جوجل */}
 <meta name="google-site-verification" content="GnBnOrp1gL_I623oKpY8YrDXosh0S38l2N-eFPHxS0g" />
+<meta name="description" content="BTU Group للمقاولات والتوريدات - متخصصون في صيانة وتجهيز التكييف وتركيب فلاتر المياه 7 مراحل في مصر." />
+<meta name="keywords" content="صيانة تكييف، فلاتر مياه، BTU Group، تركيب تكييف، صيانة فلاتر" />
       </head>
 
       {/* 1. 📢 شريط الأخبار الثابت (Sticky) */}
