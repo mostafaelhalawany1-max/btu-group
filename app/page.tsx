@@ -50,6 +50,8 @@ export default function Home() {
         <link rel="shortcut icon" href="/logo.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="manifest" href="/manifest.json" />
+{/* كود إثبات ملكية جوجل */}
+<meta name="google-site-verification" content="GnBnOrp1gL_I623oKpY8YrDXosh0S38l2N-eFPHxS0g" />
       </head>
 
       {/* 1. 📢 شريط الأخبار الثابت (Sticky) */}
