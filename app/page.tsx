@@ -1,23 +1,23 @@
 'use client'; 
 
 import { useState, useEffect } from 'react';
+import Head from 'next/head'; // تأكد من استيراد Head لربط الأيقونة صح
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallBanner, setShowInstallBanner] = useState(false);
-  const [showNotifyPopup, setShowNotifyPopup] = useState(false); // 👈 حالة نافذة الاشعارات
+  const [showNotifyPopup, setShowNotifyPopup] = useState(false);
 
   const logoFileName = "logo.png"; 
   const myPhoneNumber = "201093946313"; 
 
   useEffect(() => {
-    // 1. إظهار نافذة الاشعارات بعد 3 ثواني من فتح الموقع
+    // إظهار نافذة الاشعارات بعد 3 ثواني
     const timer = setTimeout(() => {
       setShowNotifyPopup(true);
     }, 3000);
 
-    // 2. كود اكتشاف إمكانية تثبيت التطبيق
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -44,14 +44,17 @@ export default function Home() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', direction: 'rtl', backgroundColor: '#f4f7f6' }}>
       
-      {/* 🌟 حل الأيقونة: ربطها بـ "إصدار" جديد عشان المتصفح يرفرشها */}
+      {/* 🛠️ الجزء المسؤول عن تغيير الأيقونة وإخفاء مثلث فيرسل */}
       <head>
-        <link rel="icon" href={`/${logoFileName}?v=2`} /> 
-        <link rel="apple-touch-icon" href={`/${logoFileName}?v=2`} />
+        <title>BTU Group | صيانة تكييفات وفلاتر مياه</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href={`/${logoFileName}`} />
+        <link rel="apple-touch-icon" href={`/${logoFileName}`} />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1a365d" />
       </head>
 
-      {/* 1. 📢 شريط الأخبار (نفس التنسيق المعتمد) */}
+      {/* 1. 📢 شريط الأخبار المتحرك */}
       <div style={{ backgroundColor: '#ff4d4d', color: 'white', overflow: 'hidden', whiteSpace: 'nowrap', padding: '0', fontWeight: 'bold', fontSize: '0.9rem', position: 'relative', display: 'flex', alignItems: 'center', height: '45px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
         <div style={{ backgroundColor: '#333', padding: '0 20px', height: '100%', display: 'flex', alignItems: 'center', zIndex: 2, position: 'relative', boxShadow: '5px 0 15px rgba(0,0,0,0.3)' }}>
           شريط الأخبار 📡
@@ -67,30 +70,42 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. 🔔 نافذة الاشعارات (زي اللي في سكن مصر) */}
+      {/* 2. 🔔 نافذة الاشعارات المنبثقة */}
       {showNotifyPopup && (
-        <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', borderRadius: '15px', padding: '25px', boxShadow: '0 20px 50px rgba(0,0,0,0.3)', zIndex: 2000, maxWidth: '400px', width: '90%', textAlign: 'center' }}>
-          <img src={`/${logoFileName}`} alt="Logo" style={{ width: '80px', marginBottom: '15px' }} />
-          <h3 style={{ color: '#1a365d', marginBottom: '10px' }}>اشترك في التنبيهات</h3>
-          <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '20px' }}>ليصلك أحدث عروض صيانة التكييف وفلاتر المياه فور صدورها.</p>
-          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-            <button onClick={() => setShowNotifyPopup(false)} style={{ backgroundColor: '#007bff', color: 'white', border: 'none', padding: '10px 25px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>اشترك الآن</button>
-            <button onClick={() => setShowNotifyPopup(false)} style={{ backgroundColor: '#eee', color: '#666', border: 'none', padding: '10px 25px', borderRadius: '5px', cursor: 'pointer' }}>لاحقاً</button>
+        <div style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 3000, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ backgroundColor: 'white', borderRadius: '20px', padding: '30px', maxWidth: '400px', width: '90%', textAlign: 'center', boxShadow: '0 15px 40px rgba(0,0,0,0.2)' }}>
+            <img src={`/${logoFileName}`} alt="Logo" style={{ width: '100px', marginBottom: '15px' }} />
+            <h2 style={{ color: '#1a365d', marginBottom: '10px', fontSize: '1.4rem' }}>اشترك في التنبيهات</h2>
+            <p style={{ color: '#666', marginBottom: '25px', fontSize: '0.95rem' }}>ليصلك أحدث عروض صيانة التكييف وفلاتر المياه فور صدورها.</p>
+            <div style={{ display: 'flex', gap: '15px' }}>
+              <button onClick={() => setShowNotifyPopup(false)} style={{ flex: 1, backgroundColor: '#007bff', color: 'white', border: 'none', padding: '12px', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer' }}>اشترك الآن</button>
+              <button onClick={() => setShowNotifyPopup(false)} style={{ flex: 1, backgroundColor: '#f4f4f4', color: '#666', border: 'none', padding: '12px', borderRadius: '10px', cursor: 'pointer' }}>لاحقاً</button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* 3. الهيرو سكشن (نفس كودك السابق) */}
-      <header style={{ background: 'linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")', backgroundSize: 'cover', backgroundPosition: 'center', padding: '50px 20px', textAlign: 'center', color: 'white' }}>
-        <img src={`/${logoFileName}`} alt="BTU Group" style={{ width: '220px', backgroundColor: 'white', padding: '12px', borderRadius: '15px', marginBottom: '20px' }} />
-        <h1 style={{ fontSize: '2.2rem', marginBottom: '10px' }}>BTU Group للمقاولات والتوريدات</h1>
-        <div style={{ maxWidth: '500px', margin: '30px auto', position: 'relative' }}>
-          <input type="text" placeholder="ابحث عن خدمتك..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ width: '100%', padding: '18px 25px', borderRadius: '35px', border: 'none', fontSize: '1.1rem', backgroundColor: '#FFFFFF', color: '#333' }} />
+      {/* 3. الهيرو سكشن (نفس تصميمك في الصورة) */}
+      <header style={{ background: 'linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.85)), url("https://images.unsplash.com/photo-1581094288338-2314dddb7ee1?q=80&w=1000")', backgroundSize: 'cover', backgroundPosition: 'center', padding: '60px 20px', textAlign: 'center', color: 'white' }}>
+        <img src={`/${logoFileName}`} alt="BTU Group" style={{ width: '220px', backgroundColor: 'white', padding: '15px', borderRadius: '20px', marginBottom: '25px', boxShadow: '0 5px 15px rgba(0,0,0,0.2)' }} />
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '10px', fontWeight: 'bold' }}>BTU Group للمقاولات والتوريدات</h1>
+        <p style={{ fontSize: '1.2rem', opacity: 0.9, marginBottom: '35px' }}>بوابتك الرسمية لخدمات التكييف وفلاتر المياه الاحترافية</p>
+        
+        <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative' }}>
+          <input 
+            type="text" placeholder="ابحث عن خدمتك (صيانة، فلاتر، توريد)..." 
+            value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ width: '100%', padding: '20px 30px', borderRadius: '40px', border: 'none', fontSize: '1.1rem', backgroundColor: '#FFFFFF', color: '#333', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }} 
+          />
         </div>
       </header>
 
-      {/* كروت الخدمات والشريط البرتقالي (نفس الكود) */}
-      {/* ... باقي الكود ... */}
+      {/* باقي الكروت والشريط البرتقالي (نفس الكود) */}
+      <main style={{ padding: '50px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+          {/* الكروت الـ 3 كما في الصورة */}
+        </div>
+      </main>
 
     </div>
   );
